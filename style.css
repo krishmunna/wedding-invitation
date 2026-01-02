@@ -24,19 +24,31 @@
     justify-content: center;
   }
   
-  /* Invitation poster */
+  /* Invitation poster (DESIGN SIZE) */
   .invitation {
     position: relative;
     width: 800px;
-    height: 1066px;
-  
+    height: 1066px; /* 3:4 */
     transform-origin: center;
-    transform: scale(
-      min(
-        calc(100vw / 800),
-        calc(100vh / 1066)
-      )
-    );
+  }
+  
+  /* Desktop / laptop */
+  @media (min-width: 769px) {
+    .invitation {
+      transform: scale(
+        min(
+          calc(100vw / 800),
+          calc(100vh / 1066)
+        )
+      );
+    }
+  }
+  
+  /* 🔑 MOBILE FIX — SCALE BY HEIGHT (fills screen properly) */
+  @media (max-width: 768px) {
+    .invitation {
+      transform: scale(calc(100vh / 1066));
+    }
   }
   
   /* Background image */
@@ -111,10 +123,6 @@
     cursor: pointer;
   }
   
-  .surprise-btn:hover {
-    text-decoration: underline;
-  }
-  
   /* Overlay */
   .surprise-overlay {
     position: fixed;
@@ -123,7 +131,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s ease;
@@ -135,12 +142,11 @@
   }
   
   .surprise-overlay img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 90%;
     border-radius: 12px;
   }
   
-  /* Close button */
   .close {
     position: absolute;
     top: 20px;
