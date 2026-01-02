@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="viewport">
+    <div class="invitation">
+
+      <img src="./wedding.png" alt="Wedding Invitation Background" />
+
+      <div class="text">
+        <h1>About Our Wedding</h1>
+
+        <p>
+          With grateful hearts<br>
+          and the blessings of our elders,
+        </p>
+
+        <p class="names">
+          we, <strong>Sai Krishna &amp; Lavanya</strong>,
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+          invite you to be part of our wedding ceremony<br>
+          as we begin our life together.
+        </p>
+
+        <p class="ceremony">
+          Wedding Ceremony<br>
+          5th March • 9:59 AM
+        </p>
+
+        <p>
+          Your presence will make this sacred moment<br>
+          all the more meaningful to us.
+        </p>
+
+        <!-- Surprise trigger -->
+        <button class="surprise-btn" onclick="openSurprise()">
+          A little surprise 💛
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Surprise Overlay -->
+  <div class="surprise-overlay" id="surprise">
+    <span class="close" onclick="closeSurprise()">×</span>
+    <img src="./couple.jpg" alt="Our Photo" />
+  </div>
+
+  <script>
+    function openSurprise() {
+      document.getElementById("surprise").classList.add("show");
+    }
+    function closeSurprise() {
+      document.getElementById("surprise").classList.remove("show");
+    }
+  </script>
+
+</body>
+</html>
