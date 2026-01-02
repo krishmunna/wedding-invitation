@@ -7,7 +7,7 @@
   html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   
   body {
@@ -18,23 +18,22 @@
   /* Viewport */
   .viewport {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
   }
   
-  /* Invitation poster (DESIGN SIZE) */
+  /* Invitation – base */
   .invitation {
     position: relative;
     width: 800px;
-    height: 1066px; /* 3:4 */
-    transform-origin: center;
   }
   
-  /* Desktop / laptop */
+  /* Desktop ONLY */
   @media (min-width: 769px) {
     .invitation {
+      height: 1066px;
+      transform-origin: center;
       transform: scale(
         min(
           calc(100vw / 800),
@@ -44,27 +43,33 @@
     }
   }
   
-  /* 🔑 MOBILE FIX — SCALE BY HEIGHT (fills screen properly) */
+  /* 🔥 MOBILE – FORCE RESET EVERYTHING */
   @media (max-width: 768px) {
-    .invitation {
-      transform: scale(calc(100vh / 1066));
+    .viewport {
+      align-items: flex-start !important;
     }
-  }
   
-  /* Background image */
-  .invitation img {
-    width: 100%;
-    height: 100%;
-    display: block;
+    .invitation {
+      width: 100vw !important;
+      height: auto !important;
+      transform: none !important;
+      aspect-ratio: unset !important;
+    }
+  
+    .invitation img {
+      width: 100vw !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
   }
   
   /* Text */
   .text {
     position: absolute;
-    top: 300px;
+    top: 26%;
     left: 50%;
     transform: translateX(-50%);
-    width: 520px;
+    width: 68%;
     text-align: center;
     color: #f4efe6;
   }
@@ -72,16 +77,16 @@
   /* Heading */
   .text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    margin-bottom: 14px;
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
     color: #f5efe4;
   }
   
   /* Paragraphs */
   .text p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
     color: #e6dccb;
   }
   
@@ -95,9 +100,9 @@
   
   /* Divider */
   .divider {
-    width: 50px;
+    width: 44px;
     height: 1px;
-    margin: 14px auto;
+    margin: 0.7rem auto;
     background: linear-gradient(
       to right,
       transparent,
@@ -108,18 +113,17 @@
   
   /* Ceremony */
   .ceremony {
-    margin-top: 14px;
-    font-size: 17px;
-    letter-spacing: 0.3px;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
   }
   
-  /* Surprise button */
+  /* Surprise */
   .surprise-btn {
-    margin-top: 18px;
+    margin-top: 0.8rem;
     background: none;
     border: none;
     color: #f6d88c;
-    font-size: 16px;
+    font-size: 0.9rem;
     cursor: pointer;
   }
   
@@ -154,5 +158,47 @@
     font-size: 36px;
     color: #f6d88c;
     cursor: pointer;
+  }
+  /* =========================
+   MOBILE TEXT OPTIMISATION
+   ========================= */
+@media (max-width: 768px) {
+
+    /* Move text block UP to use empty top space */
+    .text {
+      top: 22% !important;     /* was ~26–28% */
+      width: 70% !important;
+    }
+  
+    /* Reduce heading size */
+    .text h1 {
+      font-size: 1.9rem !important;
+      margin-bottom: 0.6rem !important;
+    }
+  
+    /* Reduce paragraph text */
+    .text p {
+      font-size: 0.9rem !important;
+      line-height: 1.45 !important;
+      margin-bottom: 0.45rem !important;
+    }
+  
+    /* Reduce ceremony text slightly */
+    .ceremony {
+      font-size: 0.85rem !important;
+      margin-top: 0.4rem !important;
+    }
+  
+    /* Reduce divider spacing */
+    .divider {
+      margin: 0.5rem auto !important;
+      width: 40px !important;
+    }
+  
+    /* Reduce surprise button size */
+    .surprise-btn {
+      font-size: 0.8rem !important;
+      margin-top: 0.6rem !important;
+    }
   }
   
